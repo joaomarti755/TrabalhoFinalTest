@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -27,7 +28,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="min-h-screen bg-zinc-50 dark:bg-black">
+          <header className="w-full bg-white dark:bg-black border-b border-black/[.06] dark:border-white/[.04]">
+            <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+              <Link href="/" className="font-semibold text-lg">Monitoramento</Link>
+              <nav className="flex gap-4">
+                <Link href="/" className="text-sm text-zinc-700 dark:text-zinc-200">Home</Link>
+                <Link href="/upload" className="text-sm text-zinc-700 dark:text-zinc-200">Upload CSV</Link>
+              </nav>
+            </div>
+          </header>
+          <main className="max-w-4xl mx-auto px-6 py-8">{children}</main>
+        </div>
       </body>
     </html>
   );
